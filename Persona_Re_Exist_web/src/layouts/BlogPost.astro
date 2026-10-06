@@ -1,0 +1,104 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+
+type Props = CollectionEntry<'chapters'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, volume, chapterNumber } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead title={title} description={description} />
+		<style>
+			.back-button {
+				position: fixed;
+				top: 1.5rem;
+				left: 1.5rem;
+				background: var(--bg-sepia);
+				border: 1px solid rgba(217, 101, 139, 0.2);
+				color: var(--black);
+				padding: 0.5rem 1rem;
+				border-radius: 30px;
+				font-size: 0.9em;
+				font-weight: bold;
+				box-shadow: var(--box-shadow);
+				z-index: 50;
+				transition: transform 0.2s, background 0.2s;
+				text-decoration: none;
+			}
+			.back-button:hover {
+				transform: translateY(-2px);
+				background: var(--gray-light);
+				color: var(--accent-dark);
+			}
+			.hero-image {
+				width: 100%;
+			}
+			.hero-image img {
+				display: block;
+				margin: 0 auto;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+			}
+			.prose {
+				width: 720px;
+				max-width: calc(100% - 2em);
+				margin: auto;
+				padding: 1em;
+				color: var(--gray-dark);
+			}
+			.title {
+				margin-bottom: 1em;
+				padding: 1em 0;
+				text-align: center;
+				line-height: 1;
+			}
+			.title h1 {
+				margin: 0 0 0.5em 0;
+			}
+			.date {
+				margin-bottom: 0.5em;
+				color: var(--gray);
+			}
+			.last-updated-on {
+				font-style: italic;
+			}
+		</style>
+	</head>
+
+	<body>
+		<a href="/" class="back-button" aria-label="Go back">
+			← Back to Novel
+		</a>
+		<main>
+			<article>
+				<div class="hero-image">
+					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
+				</div>
+				<div class="prose">
+					<div class="title">
+						<div class="date">
+							{pubDate && <FormattedDate date={pubDate} />}
+							{
+								updatedDate && (
+									<div class="last-updated-on">
+										Last updated on <FormattedDate date={updatedDate} />
+									</div>
+								)
+							}
+						</div>
+						{volume && chapterNumber && <p>Volume {volume} - Chapter {chapterNumber}</p>}
+						<h1>{title}</h1>
+						<hr />
+					</div>
+					<slot />
+				</div>
+			</article>
+		</main>
+	</body>
+</html>

@@ -1,0 +1,2 @@
+Strange wind from the entire Suzukaze city, something unright.
+here is Mikazuki Tsuruya, 2nd year transfer student to Suzukaze High-school. not have big goals, and just want to get a peace school life. but... there something force him to take an act through memory.

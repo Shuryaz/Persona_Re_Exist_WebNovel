@@ -1,0 +1,29 @@
+---
+const today = new Date();
+---
+
+<footer>
+	&copy; {today.getFullYear()} Your name here. All rights reserved.
+
+</footer>
+<style>
+	footer {
+		padding: 2em 1em 6em 1em;
+		background: var(--bg-gradient);
+		color: var(--gray);
+		text-align: center;
+	}
+	.social-links {
+		display: flex;
+		justify-content: center;
+		gap: 1em;
+		margin-top: 1em;
+	}
+	.social-links a {
+		text-decoration: none;
+		color: var(--gray);
+	}
+	.social-links a:hover {
+		color: var(--gray-dark);
+	}
+</style>

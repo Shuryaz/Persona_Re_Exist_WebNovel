@@ -1,0 +1,7 @@
+# Obsidian
+.obsidian/
+
+# Web App Dependencies & Builds
+Persona_Re_Exist_web/node_modules/
+Persona_Re_Exist_web/dist/
+Persona_Re_Exist_web/.astro/

@@ -1,0 +1,465 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const posts = (await getCollection('chapters')).sort(
+	(a, b) => {
+		const aNum = a.data.chapterNumber || 0;
+		const bNum = b.data.chapterNumber || 0;
+		return aNum - bNum;
+	}
+);
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style is:global>
+			html, body {
+				margin: 0 !important;
+				padding: 0 !important;
+				overflow-x: hidden;
+			}
+		</style>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			.portal-layout {
+				display: flex;
+				flex-direction: column;
+				min-height: 100vh;
+				width: 100%;
+				max-width: none;
+				margin: 0;
+				padding: 0;
+			}
+			@media (min-width: 768px) {
+				.portal-layout {
+					flex-direction: row;
+				}
+			}
+			.sidebar {
+				width: 100%;
+				background: var(--bg-sepia);
+				color: var(--black);
+				border-bottom: 1px solid rgba(217, 101, 139, 0.2);
+				padding: 2rem;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			@media (min-width: 768px) {
+				.sidebar {
+					flex: 0 0 450px;
+					max-width: 450px;
+					border-bottom: none;
+					border-right: 1px solid rgba(217, 101, 139, 0.2);
+					position: sticky;
+					top: 0;
+					height: 100vh;
+					overflow-y: hidden;
+				}
+			}
+			.cover-image {
+				width: 200px;
+				height: auto;
+				object-fit: cover;
+				border-radius: 12px;
+				box-shadow: var(--box-shadow);
+				margin-bottom: 1.5rem;
+				transition: transform 0.3s;
+			}
+			.cover-image:hover {
+				transform: scale(1.02);
+			}
+			.novel-info {
+				text-align: center;
+				margin-bottom: 2rem;
+			}
+			.novel-info h1 {
+				font-size: 2rem;
+				margin-bottom: 0.25rem;
+				color: var(--black);
+				font-weight: 700;
+			}
+			.novel-info h2 {
+				font-size: 0.9rem;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				color: var(--gray-dark);
+				font-weight: 600;
+				margin-top: 0.5rem;
+			}
+			.btn-start {
+				display: block;
+				width: 100%;
+				padding: 1rem;
+				background: var(--accent);
+				color: var(--white);
+				text-align: center;
+				border-radius: 8px;
+				font-weight: bold;
+				text-transform: uppercase;
+				margin-bottom: 1.5rem;
+				box-shadow: 0 4px 12px rgba(217, 101, 139, 0.3);
+				transition: transform 0.2s, background 0.2s;
+			}
+			.btn-start:hover {
+				background: var(--accent-dark);
+				transform: translateY(-2px);
+			}
+			.synopsis-container {
+				font-size: 0.9em;
+				line-height: 1.6;
+				text-align: justify;
+				color: var(--black);
+				opacity: 0.85;
+				width: 100%;
+				flex: 1;
+				overflow-y: auto;
+				padding-right: 1rem;
+			}
+			.synopsis-container::-webkit-scrollbar {
+				width: 6px;
+			}
+			.synopsis-container::-webkit-scrollbar-track {
+				background: transparent;
+			}
+			.synopsis-container::-webkit-scrollbar-thumb {
+				background: rgba(217, 101, 139, 0.3);
+				border-radius: 4px;
+			}
+			.synopsis-container p {
+				margin-bottom: 1rem;
+				text-indent: 0;
+			}
+			
+			.chapter-list-area {
+				flex: 1;
+				min-width: 0;
+				overflow-x: hidden;
+				background: transparent;
+				padding: 2rem;
+				min-height: 100vh;
+			}
+			.chapter-list-content {
+				max-width: 800px;
+				margin: 0 auto;
+				width: 100%;
+			}
+			.chapter-controls {
+				display: flex;
+				gap: 0.75rem;
+				margin-bottom: 2rem;
+				padding-bottom: 1rem;
+				border-bottom: 1px solid rgba(217, 101, 139, 0.2);
+			}
+			.search-wrapper {
+				flex: 1;
+				position: relative;
+				display: flex;
+				align-items: center;
+			}
+			.search-icon {
+				position: absolute;
+				left: 1rem;
+				width: 20px;
+				height: 20px;
+				color: var(--gray);
+				opacity: 0.7;
+				pointer-events: none;
+			}
+			#chapter-search {
+				width: 100%;
+				padding: 0.85rem 1rem 0.85rem 3rem;
+				border-radius: 30px;
+				border: 1px solid var(--accent);
+				background: var(--gray-light);
+				color: var(--black);
+				font-family: var(--font-ui);
+				font-size: 1rem;
+				outline: 1px solid var(--accent);
+				outline-offset: -4px;
+				transition: border-color 0.2s, outline-color 0.2s;
+			}
+			#chapter-search:focus {
+				border-color: var(--accent-dark);
+				outline-color: var(--accent-dark);
+			}
+			#sort-toggle {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 50px;
+				height: 50px;
+				padding: 0;
+				background: var(--gray-light);
+				color: var(--accent);
+				border: 1px solid rgba(217, 101, 139, 0.3);
+				border-radius: 12px;
+				cursor: pointer;
+				transition: background 0.2s, transform 0.2s, border-color 0.2s;
+			}
+			#sort-toggle:hover, #author-contact-btn:hover {
+				background: var(--white);
+				border-color: var(--accent);
+				transform: translateY(-2px);
+			}
+			.sort-icon {
+				width: 24px;
+				height: 24px;
+				transition: transform 0.3s;
+			}
+			#author-contact-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 50px;
+				height: 50px;
+				padding: 0;
+				background: var(--gray-light);
+				color: var(--accent);
+				border: 1px solid rgba(217, 101, 139, 0.3);
+				border-radius: 12px;
+				cursor: pointer;
+				transition: background 0.2s, transform 0.2s, border-color 0.2s;
+			}
+			#author-contact-btn svg {
+				width: 24px;
+				height: 24px;
+			}
+			
+			/* Dropdown Styles */
+			.dropdown-wrapper {
+				position: relative;
+			}
+			.dropdown-menu {
+				position: absolute;
+				top: calc(100% + 0.5rem);
+				right: 0;
+				background: var(--bg-sepia);
+				border: 1px solid var(--accent);
+				border-radius: 12px;
+				box-shadow: 0 8px 24px rgba(217, 101, 139, 0.2);
+				width: 200px;
+				opacity: 0;
+				visibility: hidden;
+				transform: translateY(-10px);
+				transition: opacity 0.2s, transform 0.2s, visibility 0.2s;
+				z-index: 100;
+				display: flex;
+				flex-direction: column;
+				overflow: hidden;
+			}
+			.dropdown-menu.show {
+				opacity: 1;
+				visibility: visible;
+				transform: translateY(0);
+			}
+			.dropdown-header {
+				padding: 1rem;
+				border-bottom: 1px solid rgba(217, 101, 139, 0.2);
+				display: flex;
+				flex-direction: column;
+				gap: 0.2rem;
+			}
+			.dropdown-header strong {
+				color: var(--black);
+				font-size: 0.9em;
+			}
+			.dropdown-header span {
+				color: var(--gray-dark);
+				font-size: 0.75em;
+			}
+			.dropdown-item {
+				padding: 0.75rem 1rem;
+				color: var(--black);
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 0.85em;
+				transition: background 0.2s, color 0.2s;
+			}
+			.dropdown-item:hover {
+				background: var(--accent);
+				color: var(--white);
+			}
+			.chapter-grid {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+			.chapter-card {
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+				padding: 0.5rem 1rem;
+				background: var(--gray-light);
+				border: 1px solid rgba(217, 101, 139, 0.1);
+				border-radius: 6px;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.chapter-card:hover {
+				transform: translateX(4px);
+				box-shadow: 0 4px 12px rgba(217, 101, 139, 0.15);
+				border-color: rgba(217, 101, 139, 0.4);
+			}
+			.chapter-main {
+				display: flex;
+				flex-direction: column;
+				gap: 0.15rem;
+			}
+			.tag-chapter {
+				font-size: 0.65em;
+				opacity: 0.7;
+				font-family: monospace;
+				text-transform: uppercase;
+				font-weight: bold;
+				color: var(--accent-dark);
+				letter-spacing: 0.05em;
+			}
+			.chapter-title {
+				font-size: 1.1em;
+				font-weight: 700;
+				color: var(--black);
+				line-height: 1.2;
+			}
+			.tag-volume {
+				font-size: 0.65em;
+				font-family: monospace;
+				text-transform: uppercase;
+				font-weight: bold;
+				padding: 0.2rem 0.6rem;
+				border-radius: 20px;
+				background: rgba(217, 101, 139, 0.15);
+				color: var(--accent-dark);
+				white-space: nowrap;
+				letter-spacing: 0.05em;
+			}
+		</style>
+	</head>
+	<body>
+		<main class="portal-layout">
+			<aside class="sidebar">
+				<img src="/cover.png" alt="Persona Re Exist Cover" class="cover-image" />
+				<div class="novel-info">
+					<h1>{SITE_TITLE}</h1>
+					<h2>By: Mikazuki Tsuruya</h2>
+				</div>
+				<a href={`/chapters/${posts[0]?.id || ''}`} class="btn-start">Start Reading</a>
+				<div class="synopsis-container prose">
+					<p>Strange wind from the entire Suzukaze city, something unright.</p>
+					<p>here is Mikazuki Tsuruya, 2nd year transfer student to Suzukaze High-school. not have big goals, and just want to get a peace school life. but... there something force him to take an act through memory.</p>
+				</div>
+			</aside>
+			<section class="chapter-list-area">
+				<div class="chapter-list-content">
+					<div class="chapter-controls">
+						<div class="search-wrapper">
+							<svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+							<input type="text" id="chapter-search" placeholder="Search title or number..." />
+						</div>
+						<button id="sort-toggle" aria-label="Sort Order" title="Toggle Sort Order">
+							<svg class="sort-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="16" y2="6"></line><line x1="4" y1="12" x2="10" y2="12"></line><line x1="4" y1="18" x2="6" y2="18"></line></svg>
+						</button>
+						<div class="dropdown-wrapper">
+							<button id="author-contact-btn" aria-label="Contact Author" title="Author Contacts">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+							</button>
+							<div id="author-dropdown" class="dropdown-menu">
+								<div class="dropdown-header">
+									<strong>Mikazuki Tsuruya</strong>
+									<span style="opacity: 0.8; font-style: italic; margin-top: 0.25rem; line-height: 1.4;">Disclaimer: This webnovel is a purely non-commercial fan-project created for fun.</span>
+								</div>
+								<a href="https://github.com/Shuryaz" target="_blank" rel="noopener noreferrer" class="dropdown-item">GitHub</a>
+							</div>
+						</div>
+					</div>
+					<div class="chapter-grid" id="chapter-grid">
+						{
+							posts.map((post) => (
+								<a href={`/chapters/${post.id}/`} class="chapter-card" data-title={post.data.title.toLowerCase()} data-chapter={post.data.chapterNumber || 0}>
+									<div class="chapter-main">
+										<span class="tag-chapter">{post.data.chapterNumber ? `Chapter ${post.data.chapterNumber}` : 'Chapter'}</span>
+										<span class="chapter-title">{post.data.title}</span>
+									</div>
+									{post.data.volume && <span class="tag-volume">Volume {post.data.volume}</span>}
+								</a>
+							))
+						}
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<script>
+			document.addEventListener('DOMContentLoaded', () => {
+				const searchInput = document.getElementById('chapter-search') as HTMLInputElement;
+				const sortBtn = document.getElementById('sort-toggle');
+				const grid = document.getElementById('chapter-grid');
+				if (!searchInput || !sortBtn || !grid) return;
+
+				let isAsc = true;
+				
+				function filterAndSort() {
+					const query = searchInput.value.toLowerCase();
+					const cards = Array.from(grid.children) as HTMLElement[];
+					
+					// Filter
+					cards.forEach(card => {
+						const title = card.getAttribute('data-title') || '';
+						const chapterNum = card.getAttribute('data-chapter') || '';
+						const searchableText = `${title} chapter ${chapterNum} ${chapterNum}`.toLowerCase();
+						
+						if (searchableText.includes(query)) {
+							card.style.display = 'flex';
+						} else {
+							card.style.display = 'none';
+						}
+					});
+
+					// Sort
+					const visibleCards = cards.filter(card => card.style.display !== 'none');
+					visibleCards.sort((a, b) => {
+						const numA = parseInt(a.getAttribute('data-chapter') || '0', 10);
+						const numB = parseInt(b.getAttribute('data-chapter') || '0', 10);
+						return isAsc ? numA - numB : numB - numA;
+					});
+
+					// Append in sorted order
+					visibleCards.forEach(card => grid.appendChild(card));
+				}
+
+				searchInput.addEventListener('input', filterAndSort);
+				
+				sortBtn.addEventListener('click', () => {
+					isAsc = !isAsc;
+					const svg = sortBtn.querySelector('svg');
+					if (svg) svg.style.transform = isAsc ? 'scaleY(1)' : 'scaleY(-1)';
+					filterAndSort();
+				});
+
+				// Dropdown Logic
+				const dropdown = document.getElementById('author-dropdown');
+				const authorBtn = document.getElementById('author-contact-btn');
+
+				if (authorBtn && dropdown) {
+					authorBtn.addEventListener('click', (e) => {
+						e.stopPropagation();
+						dropdown.classList.toggle('show');
+					});
+					
+					// Close when clicking outside
+					document.addEventListener('click', (e) => {
+						if (!dropdown.contains(e.target as Node) && e.target !== authorBtn) {
+							dropdown.classList.remove('show');
+						}
+					});
+				}
+			});
+		</script>
+	</body>
+</html>
