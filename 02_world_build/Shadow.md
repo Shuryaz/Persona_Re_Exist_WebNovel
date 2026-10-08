@@ -1,0 +1,1 @@
+representation of any memory that had been forgotten,collapse, even die.

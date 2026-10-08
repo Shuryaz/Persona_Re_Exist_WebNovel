@@ -10,7 +10,7 @@ const chapters = defineCollection({
 			description: z.string().optional(),
 			volume: z.number().optional(),
 			chapterNumber: z.number().optional(),
-			draft: z.boolean().optional(),
+			draft: z.union([z.boolean(), z.string()]).optional(),
 			pubDate: z.coerce.date().optional(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),

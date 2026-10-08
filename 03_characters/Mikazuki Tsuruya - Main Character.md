@@ -14,3 +14,13 @@
 - Police just closed the case one-sided, even the case wasn't clear. also her deadbody couldn't found. of course that made Mikazuki in rage, especially to Kengo Seizaki, the person who might be his brother in law(officialy he was).
 
 - Knowing that act wouldn't bring her back alive, he just got depressed for a while, so... he need to go to rehabilitation center for a time.
+
+
+
+**Reminiscence Appearance**
+
+- Using mechanical sword at left hand
+- at right hand use an armor with allmighty elements wit 0.000001% effectiveness, he doesn't even know had that element, or even have elements.
+
+**Ability**
+- this is the fool mechanism of my own new wild card system, unlike using much persona(because my character isnt really a blank page). he can amplify teammates ability with several combos.

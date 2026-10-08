@@ -247,6 +247,36 @@ const posts = (await getCollection('chapters')).sort(
 				width: 24px;
 				height: 24px;
 			}
+			#settings-btn {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 50px;
+				height: 50px;
+				padding: 0;
+				background: var(--gray-light);
+				color: var(--accent);
+				border: 1px solid rgba(217, 101, 139, 0.3);
+				border-radius: 12px;
+				cursor: pointer;
+				transition: background 0.2s, transform 0.2s, border-color 0.2s;
+			}
+			#settings-btn:hover {
+				background: var(--white);
+				border-color: var(--accent);
+				transform: translateY(-2px);
+			}
+			#settings-btn svg {
+				width: 24px;
+				height: 24px;
+			}
+			#author-contact-btn .quill-body {
+				fill: var(--gray-light);
+				transition: fill 0.2s;
+			}
+			#author-contact-btn:hover .quill-body {
+				fill: var(--white);
+			}
 			
 			/* Dropdown Styles */
 			.dropdown-wrapper {
@@ -302,6 +332,50 @@ const posts = (await getCollection('chapters')).sort(
 				background: var(--accent);
 				color: var(--white);
 			}
+			
+			.theme-options {
+				display: flex;
+				flex-direction: column;
+				gap: 0.5rem;
+				padding: 1rem;
+			}
+			.theme-btn {
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				width: 100%;
+				padding: 0.75rem;
+				background: var(--gray-light);
+				border: 1px solid rgba(217, 101, 139, 0.2);
+				border-radius: 8px;
+				color: var(--black);
+				font-family: var(--font-ui);
+				font-size: 0.9em;
+				font-weight: 600;
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+			.theme-btn:hover {
+				border-color: var(--accent);
+			}
+			.theme-btn.active {
+				border-color: var(--accent);
+				background: var(--bg-sepia);
+				box-shadow: 0 0 0 1px var(--accent);
+			}
+			.theme-preview {
+				width: 18px;
+				height: 18px;
+				border-radius: 50%;
+				border: 1px solid rgba(0,0,0,0.2);
+			}
+			.light-preview {
+				background: #f4ebe8;
+			}
+			.dark-preview {
+				background: #1a1615;
+			}
+
 			.chapter-grid {
 				display: grid;
 				grid-template-columns: 1fr;
@@ -336,6 +410,18 @@ const posts = (await getCollection('chapters')).sort(
 				font-weight: bold;
 				color: var(--accent-dark);
 				letter-spacing: 0.05em;
+			}
+			.tag-draft {
+				font-size: 0.6em;
+				font-family: monospace;
+				text-transform: uppercase;
+				font-weight: bold;
+				padding: 0.2rem 0.5rem;
+				border-radius: 4px;
+				background: rgba(217, 119, 6, 0.15);
+				color: #d97706;
+				letter-spacing: 0.05em;
+				white-space: nowrap;
 			}
 			.chapter-title {
 				font-size: 1.1em;
@@ -383,7 +469,14 @@ const posts = (await getCollection('chapters')).sort(
 						</button>
 						<div class="dropdown-wrapper">
 							<button id="author-contact-btn" aria-label="Contact Author" title="Author Contacts">
-								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+								<svg class="book-quill-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+									<path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+									<g transform="translate(6, -2) scale(0.8) rotate(15, 12, 12)" stroke-width="2.5">
+										<path class="quill-body" d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"></path>
+										<line x1="16" y1="8" x2="2" y2="22"></line>
+									</g>
+								</svg>
 							</button>
 							<div id="author-dropdown" class="dropdown-menu">
 								<div class="dropdown-header">
@@ -393,13 +486,42 @@ const posts = (await getCollection('chapters')).sort(
 								<a href="https://github.com/Shuryaz" target="_blank" rel="noopener noreferrer" class="dropdown-item">GitHub</a>
 							</div>
 						</div>
+						
+						<div class="dropdown-wrapper">
+							<button id="settings-btn" aria-label="Settings" title="Theme Settings">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+							</button>
+							<div id="settings-dropdown" class="dropdown-menu" style="width: 250px;">
+								<div class="dropdown-header">
+									<strong>Appearance</strong>
+									<span>Select your reading theme</span>
+								</div>
+								<div class="theme-options">
+									<button class="theme-btn" data-set-theme="light">
+										<div class="theme-preview light-preview"></div>
+										Sepia (Light)
+									</button>
+									<button class="theme-btn" data-set-theme="dark">
+										<div class="theme-preview dark-preview"></div>
+										Sunset (Dark)
+									</button>
+								</div>
+							</div>
+						</div>
 					</div>
 					<div class="chapter-grid" id="chapter-grid">
 						{
 							posts.map((post) => (
 								<a href={`/chapters/${post.id}/`} class="chapter-card" data-title={post.data.title.toLowerCase()} data-chapter={post.data.chapterNumber || 0}>
 									<div class="chapter-main">
-										<span class="tag-chapter">{post.data.chapterNumber ? `Chapter ${post.data.chapterNumber}` : 'Chapter'}</span>
+										<div style="display: flex; gap: 0.5rem; align-items: center;">
+											<span class="tag-chapter">{post.data.chapterNumber ? `Chapter ${post.data.chapterNumber}` : 'Chapter'}</span>
+											{post.data.draft && (
+												<span class="tag-draft">
+													{typeof post.data.draft === 'string' ? post.data.draft : 'Draft'}
+												</span>
+											)}
+										</div>
 										<span class="chapter-title">{post.data.title}</span>
 									</div>
 									{post.data.volume && <span class="tag-volume">Volume {post.data.volume}</span>}
@@ -410,8 +532,11 @@ const posts = (await getCollection('chapters')).sort(
 				</div>
 				
 				<div class="dashboard-footer">
-					<p>&copy; {new Date().getFullYear()} Mikazuki Tsuruya. All original writing belongs to the author.</p>
-					<p>"Persona" and all related properties are owned by ATLUS and SEGA. This is a non-commercial fan-project created for entertainment purposes only, and is not affiliated with ATLUS or SEGA.</p>
+					<p>&copy; {new Date().getFullYear()} Mikazuki Tsuruya & Contributors. This is an open-source collaborative fan-project.</p>
+					<p>"Persona" and all related properties are owned by ATLUS and SEGA. This non-commercial project is created for entertainment and is not affiliated with ATLUS or SEGA.</p>
+					<p style="margin-top: 0.75rem;">
+						<a href="https://github.com/Shuryaz" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: none; font-weight: bold;">Contribute on GitHub</a>
+					</p>
 				</div>
 			</section>
 		</main>
@@ -464,22 +589,74 @@ const posts = (await getCollection('chapters')).sort(
 				});
 
 				// Dropdown Logic
-				const dropdown = document.getElementById('author-dropdown');
+				const authorDropdown = document.getElementById('author-dropdown');
 				const authorBtn = document.getElementById('author-contact-btn');
+				const settingsDropdown = document.getElementById('settings-dropdown');
+				const settingsBtn = document.getElementById('settings-btn');
 
-				if (authorBtn && dropdown) {
+				const closeAllDropdowns = () => {
+					authorDropdown?.classList.remove('show');
+					settingsDropdown?.classList.remove('show');
+				};
+
+				if (authorBtn && authorDropdown) {
 					authorBtn.addEventListener('click', (e) => {
 						e.stopPropagation();
-						dropdown.classList.toggle('show');
-					});
-					
-					// Close when clicking outside
-					document.addEventListener('click', (e) => {
-						if (!dropdown.contains(e.target as Node) && e.target !== authorBtn) {
-							dropdown.classList.remove('show');
-						}
+						const isShowing = authorDropdown.classList.contains('show');
+						closeAllDropdowns();
+						if (!isShowing) authorDropdown.classList.add('show');
 					});
 				}
+
+				if (settingsBtn && settingsDropdown) {
+					settingsBtn.addEventListener('click', (e) => {
+						e.stopPropagation();
+						const isShowing = settingsDropdown.classList.contains('show');
+						closeAllDropdowns();
+						if (!isShowing) settingsDropdown.classList.add('show');
+					});
+				}
+				
+				// Close when clicking outside
+				document.addEventListener('click', (e) => {
+					if (authorDropdown && !authorDropdown.contains(e.target) && e.target !== authorBtn) {
+						authorDropdown.classList.remove('show');
+					}
+					if (settingsDropdown && !settingsDropdown.contains(e.target) && e.target !== settingsBtn) {
+						settingsDropdown.classList.remove('show');
+					}
+				});
+
+				// Theme Toggle Logic
+				const themeBtns = document.querySelectorAll('.theme-btn');
+				
+				const updateActiveThemeButton = (currentTheme) => {
+					themeBtns.forEach(btn => {
+						if (btn.getAttribute('data-set-theme') === currentTheme) {
+							btn.classList.add('active');
+						} else {
+							btn.classList.remove('active');
+						}
+					});
+				};
+				
+				// Initialize button state based on current applied theme
+				const initialTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+				updateActiveThemeButton(initialTheme);
+				
+				themeBtns.forEach(btn => {
+					btn.addEventListener('click', () => {
+						const selectedTheme = btn.getAttribute('data-set-theme');
+						if (selectedTheme === 'dark') {
+							document.documentElement.setAttribute('data-theme', 'dark');
+							localStorage.setItem('theme', 'dark');
+						} else {
+							document.documentElement.removeAttribute('data-theme');
+							localStorage.setItem('theme', 'light');
+						}
+						updateActiveThemeButton(selectedTheme);
+					});
+				});
 			});
 		</script>
 	</body>

@@ -15,6 +15,19 @@
 	--font-novel: 'Nunito', sans-serif;
 }
 
+html[data-theme="dark"] {
+	--accent: #ff85aa;
+	--accent-dark: #d9658b;
+	--black: #e4d8d6;
+	--white: #1a1615;
+	--gray: #8f7f7d;
+	--gray-light: #25201f;
+	--gray-dark: #a39593;
+	--bg-sepia: #1a1615;
+	--bg-gradient: linear-gradient(135deg, #1a1615 0%, #110e0e 100%);
+	--box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
 body {
 	font-family: var(--font-ui);
 	margin: 0;

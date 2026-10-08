@@ -1,0 +1,165 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={`Contributor Guide | ${SITE_TITLE}`} description="Learn how to contribute to the Persona Re:Exist open-source webnovel." />
+		<style>
+			body {
+				background-color: var(--bg-sepia);
+				color: var(--black);
+				font-family: var(--font-body);
+			}
+			.guide-container {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 4rem 2rem;
+			}
+			.back-btn {
+				display: inline-flex;
+				align-items: center;
+				gap: 0.5rem;
+				color: var(--accent);
+				text-decoration: none;
+				font-family: var(--font-ui);
+				font-weight: 600;
+				margin-bottom: 2rem;
+				transition: opacity 0.2s;
+			}
+			.back-btn:hover {
+				opacity: 0.7;
+			}
+			.guide-header {
+				margin-bottom: 3rem;
+				text-align: center;
+			}
+			.guide-header h1 {
+				font-family: var(--font-ui);
+				color: var(--accent);
+				font-size: 2.5rem;
+				text-transform: uppercase;
+				letter-spacing: 0.1em;
+				margin-bottom: 1rem;
+			}
+			.guide-header p {
+				font-size: 1.1rem;
+				opacity: 0.8;
+			}
+			.guide-section {
+				background: var(--gray-light);
+				border: 1px solid rgba(217, 101, 139, 0.2);
+				border-radius: 12px;
+				padding: 2rem;
+				margin-bottom: 2rem;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+			}
+			.guide-section h2 {
+				font-family: var(--font-ui);
+				color: var(--accent);
+				margin-top: 0;
+				margin-bottom: 1rem;
+				display: flex;
+				align-items: center;
+				gap: 0.75rem;
+				font-size: 1.4rem;
+			}
+			.guide-section p {
+				line-height: 1.6;
+				margin-bottom: 1rem;
+			}
+			.guide-section ul {
+				line-height: 1.6;
+				margin-bottom: 1rem;
+				padding-left: 1.5rem;
+			}
+			.guide-section li {
+				margin-bottom: 0.5rem;
+			}
+			.highlight {
+				font-weight: bold;
+				color: var(--accent-dark);
+			}
+		</style>
+	</head>
+	<body>
+		<main class="guide-container">
+			<a href="/" class="back-btn">
+				<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+				Return to Homepage
+			</a>
+			
+			<div class="guide-header">
+				<h1>Contributor Guide</h1>
+				<p>Welcome to the Velvet Room. This webnovel is an open-source collaborative project! Here is how you can weave your own threads into the story.</p>
+			</div>
+
+			<div class="guide-section">
+				<h2>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+					1. Editing Chapters
+				</h2>
+				<p>See a typo? Want to fix some grammar or suggest better phrasing? You can edit chapters directly!</p>
+				<ul>
+					<li>While reading any chapter, click the <span class="highlight">Pencil Icon</span> in the top navigation bar.</li>
+					<li>This will take you straight to GitHub, where you can modify the text and submit a "Pull Request" for the author to approve.</li>
+				</ul>
+			</div>
+
+			<div class="guide-section">
+				<h2>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+					2. Creating Characters (NPCs & Main)
+				</h2>
+				<p>The world of Elysians needs citizens! You can submit your own original characters to populate Suzukaze city.</p>
+				<ul>
+					<li><span class="highlight">NPCs:</span> Create classmates, teachers, shopkeepers, or random citizens that Mika might run into during his daily life.</li>
+					<li><span class="highlight">Other Main Characters:</span> Have a grand idea for a Persona user? You can pitch new core cast members! Submit a character profile detailing their Arcana, Persona, and backstory.</li>
+				</ul>
+			</div>
+
+			<div class="guide-section">
+				<h2>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+					3. Social Links (Confidants)
+				</h2>
+				<p>It wouldn't be Persona without Social Links! You can write and submit entire Social Link storylines.</p>
+				<ul>
+					<li>Pick an Arcana (e.g., The Chariot, The Hierophant) and create a 10-Rank storyline for a character.</li>
+					<li>Submit these as separate markdown files in the project repository for review. If they fit the theme, they become official canon!</li>
+				</ul>
+			</div>
+
+			<div class="guide-section">
+				<h2>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+					4. Spin-offs & Side Stories
+				</h2>
+				<p>Do you want to explore what happens when Mika isn't around? The Elysians universe is massive.</p>
+				<ul>
+					<li>You can write Side Stories focusing on other characters' perspectives, slice-of-life moments, or even entirely separate Spin-off arcs that take place in the same universe.</li>
+				</ul>
+			</div>
+
+			<div class="guide-section" style="background: rgba(217, 101, 139, 0.05); border-color: var(--accent);">
+				<h2>
+					<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+					5. The Review Process (Quality Control)
+				</h2>
+				<p>To ensure the webnovel remains high quality and true to the vision, <strong>no one can edit the live website directly.</strong></p>
+				<ul>
+					<li>When you make a change on GitHub, you are actually submitting a <span class="highlight">Pull Request</span> (a suggestion).</li>
+					<li>The Story Director (Mikazuki Tsuruya) will personally review every single submission.</li>
+					<li><strong>Please note:</strong> Not all submissions will be accepted. If your writing fits the world perfectly, it will be approved and merged into the official story! If it conflicts with the author's vision, breaks the lore, or simply doesn't fit the current direction, it will be politely declined.</li>
+					<li>Don't be discouraged if a submission isn't accepted! It's simply part of the collaborative editing process.</li>
+				</ul>
+			</div>
+			
+			<div style="text-align: center; margin-top: 3rem;">
+				<a href="https://github.com/Shuryaz/Persona_Re_Exist_WebNovel" target="_blank" rel="noopener noreferrer" style="display: inline-block; padding: 1rem 2rem; background: var(--accent); color: white; text-decoration: none; font-weight: bold; border-radius: 8px; font-family: var(--font-ui); letter-spacing: 0.05em;">VISIT THE GITHUB REPO TO START</a>
+			</div>
+		</main>
+	</body>
+</html>
