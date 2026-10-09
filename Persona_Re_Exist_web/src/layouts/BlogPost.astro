@@ -755,6 +755,38 @@ allChapters.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 				width: 18px;
 				height: 18px;
 			}
+			
+			/* Mobile Optimization */
+			@media (max-width: 720px) {
+				.prose {
+					max-width: 100%;
+					padding: 1.5em 0; /* Let main handle the horizontal padding */
+				}
+				.title {
+					padding-top: 0;
+				}
+				.chapter-nav {
+					flex-direction: column;
+					gap: 1.5rem;
+				}
+				.nav-btn {
+					width: 100%;
+				}
+				.center-btn {
+					order: -1;
+					margin-bottom: 0.5rem;
+				}
+				.nav-container {
+					gap: 0.75rem;
+					padding: 0.35rem 0.5rem;
+				}
+				.btn-contents span {
+					display: none;
+				}
+				#comments-section {
+					padding: 1rem !important;
+				}
+			}
 		</style>
 	</head>
 
@@ -769,7 +801,7 @@ allChapters.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 				</a>
 				<button title="Contents" class="btn-contents btn-toc">
 					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
-					Contents
+					<span>Contents</span>
 				</button>
 				<button id="btn-contribute" title="Contribute" class="icon-btn">
 					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg>
