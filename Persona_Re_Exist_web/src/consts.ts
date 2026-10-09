@@ -1,5 +1,5 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = 'Persona Re Exist';
-export const SITE_DESCRIPTION = 'Welcome to the Persona Re Exist Webnovel!';
+export const SITE_TITLE = 'Persona Re Existense';
+export const SITE_DESCRIPTION = 'Welcome to the Persona Re Existense Webnovel!';
