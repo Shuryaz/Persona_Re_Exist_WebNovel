@@ -201,3 +201,32 @@ hr {
 	clip-path: inset(50%);
 	white-space: nowrap;
 }
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: clip;
+}
+
+/* Premium Selection Color */
+::selection {
+	background-color: var(--accent);
+	color: var(--white);
+}
+
+/* Custom Scrollbar for Desktop */
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background: var(--bg-sepia);
+}
+::-webkit-scrollbar-thumb {
+	background: var(--gray);
+	border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--accent);
+}
