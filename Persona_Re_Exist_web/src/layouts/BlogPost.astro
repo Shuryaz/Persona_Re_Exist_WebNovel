@@ -913,6 +913,8 @@ allChapters.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 							<select id="ctrl-theme">
 								<option value="light">Sepia (Light)</option>
 								<option value="dark">Sunset (Dark)</option>
+								<option value="oled">AMOLED (Pitch Black)</option>
+								<option value="velvet">Velvet Room (Midnight)</option>
 							</select>
 						</div>
 						<div class="setting-item">
@@ -1159,6 +1161,11 @@ allChapters.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 					applySettings();
 				};
 
+				function getGiscusTheme(t: string) {
+					if (t === 'light') return 'light';
+					return 'transparent_dark';
+				}
+
 				function setGiscusTheme(theme: string) {
 					const iframe = document.querySelector('iframe.giscus-frame') as HTMLIFrameElement;
 					if (!iframe || !iframe.contentWindow) return;
@@ -1170,14 +1177,14 @@ allChapters.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 
 				const applySettings = () => {
 					// Apply Theme globally
-					if (ctrlTheme.value === 'dark') {
-						document.documentElement.setAttribute('data-theme', 'dark');
-						setGiscusTheme('transparent_dark');
+					const selectedTheme = ctrlTheme.value;
+					if (selectedTheme && selectedTheme !== 'light') {
+						document.documentElement.setAttribute('data-theme', selectedTheme);
 					} else {
 						document.documentElement.removeAttribute('data-theme');
-						setGiscusTheme('light');
 					}
-					localStorage.setItem('theme', ctrlTheme.value);
+					setGiscusTheme(getGiscusTheme(selectedTheme));
+					localStorage.setItem('theme', selectedTheme);
 
 					// Handle Solid Background
 					if (ctrlSolidBg.checked) {
@@ -1425,7 +1432,7 @@ allChapters.sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 				const giscusContainer = document.getElementById('giscus-container');
 				if (giscusContainer) {
 					const savedTheme = localStorage.getItem('theme') || defaults.theme;
-					const giscusTheme = savedTheme === 'dark' ? 'transparent_dark' : 'light';
+					const giscusTheme = savedTheme === 'light' ? 'light' : 'transparent_dark';
 					
 					const script = document.createElement('script');
 					script.src = 'https://giscus.app/client.js';

@@ -28,6 +28,33 @@ html[data-theme="dark"] {
 	--box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
+html[data-theme="oled"] {
+	--accent: #ff7fa3;
+	--accent-dark: #d9658b;
+	--black: #eaeaea;
+	--white: #000000;
+	--gray: #666666;
+	--gray-light: #111111;
+	--gray-dark: #999999;
+	--bg-sepia: #000000;
+	--bg-gradient: linear-gradient(180deg, #000000 0%, #050505 100%);
+	--box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+}
+
+html[data-theme="velvet"] {
+	--accent: #ff75a0;
+	--accent-dark: #db527e;
+	--black: #d8e0f0;
+	--white: #0a0d1a;
+	--gray: #5a688e;
+	--gray-light: #12172b;
+	--gray-dark: #8897c2;
+	--bg-sepia: #0a0d1a;
+	--bg-gradient: linear-gradient(135deg, #0d1224 0%, #060812 100%);
+	--box-shadow: 0 8px 26px rgba(4, 7, 18, 0.7);
+}
+
+
 body {
 	font-family: var(--font-ui);
 	margin: 0;

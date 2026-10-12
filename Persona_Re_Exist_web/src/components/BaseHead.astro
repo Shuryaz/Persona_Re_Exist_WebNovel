@@ -61,8 +61,8 @@ const { title, description, image = FallbackImage } = Astro.props;
 		}
 		return 'light';
 	})();
-	if (theme === 'dark') {
-		document.documentElement.setAttribute('data-theme', 'dark');
+	if (theme && theme !== 'light') {
+		document.documentElement.setAttribute('data-theme', theme);
 	} else {
 		document.documentElement.removeAttribute('data-theme');
 	}

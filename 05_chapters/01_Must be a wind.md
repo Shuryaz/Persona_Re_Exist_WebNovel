@@ -7,45 +7,55 @@ draft: work in progress
 ---
 A morning breeze touch my slightly long hair that is kinda distract me
 
+"Should I cut this?,or maybe just tie it?... whatever is that i just wanna taste this warm air"
 
-"Should I cut this?,or maybe just tie it?"
+
+with a second thought take step into the path,its kinda rough trough this path haven't repaired yet,the sunlight is shine like this will be a good day.
+
+or it should be like that.
 
 
-with a second thought take step into the path,its kinda rough trough this way haven't repaired yet,the sunlight is warm like this will be a good day.
+_I'm Mikazuki Tsuruya, second years transfer student to **Suzukaze** Highschool, actually i was moved to this city six months ago, but my attend to school have been delayed because of some things\._
 
-_I'm Mikazuki Tsuruya, second years transfer student to **Suzukaze** Highschool, actually i was moved to this city six months ago, but my school delayed because of some incidents._
 
-There's a group of girls who have a chit chat while going to the same school,one of them steal a glance to a newface here,
-then poke her friends to tell them about it, 
+Cherry blossoms petal drop to my face, *they're beautiful as always*, take the petal for look at detail, saw the path were the scattered petals as long the way through.
+
+There's a group of girls that have a gossip while going to the same school,one of them steal a glance to a newface stop near cherry blossom tree, poke her friend with elbow for that, 
 
 "sst hey, is she a new student at our school?, she's kinda cute"
 
-she whisper it,
+"Oooh... you were right, look at her eyes, i have only see that in anime, but- but this is real, it's amazing"
 
-"but why she wear a boys uniform?,a crossdress?"
 
-they were mutter loud enough for he can hear it,
+
+"but why she wear a boys uniform?, crossdressing?"
+
+they were mutter loud enough for he can heard that,
 
 "Sorry, but i'm a guy" 
 
-he replied with a genuie smile,then continue to walk pass the school gate, 
-leaving the girls with dumbfounded face.
+replied with a genuie smile,then continue to walk pass the school gate,leaving the girls with dumbfounded face.
+
+"Wait what!????" they got a jolt of surprises.
+
 
 Lookup to scan the school building with some kind of awe,
 
-_this is big_
+_this... my school now...?_
 
-he lost in thought for a second then continue make a way to enter, inside _this is wide than expected_, remember to go to faculty office Mikazuki ask one girl that look shy
+lost in thought for a sec, continue make a way to enter the door, inside _this is wide than i expected_, snap up from mind remember to go to faculty office, saw a girl that looks nervous.
 
-"excuse me, did you know where is the faculty office?" 
+Seems like it also her first day at this highschool,*should ask her? maybe*
 
-tilt head while say it, the girl looks like wasn't ready for sudden question 
+"excuse me, you know where is the faculty office?" 
+
+tilt head a bit, the girl looks like wasn't ready for sudden question 
 
 "Eehh... em... this wa- no this- this way"
 
-point to way of faculty office,then tapping fingers with awkward gesture.
+point to way of faculty office,then tapping fingers awkwardly, looks like she had panick attack.
 
-"Alright... thanks um..."
+"You okay?... um..."
 
 look at the nametag 
 
@@ -57,7 +67,7 @@ take a glance to her eyes.
 
 slightly step back. 
 
-"I'm Mikazuki Tsuruya,it nice to meet you then... seeya, i need to confirm at faculty office" 
+"I'm Mikazuki Tsuruya,it nice to meet you ... thanks then, i need to confirm my attend at faculty office, seeya" 
 
 take a step to the way that she told before. Aoi just nods let him go.
 
@@ -95,7 +105,23 @@ make a way to the auditory by following her.
 
 The Principal had speech to Suzukaze Highschool students at this opening semester.
 
-"sst hey..." someone poke and whisper to Mikazuki, "are ya new here?",look at the boy who talk to him,"yeah,Mikazuki Tsuruya" nods why quiet introduction during Principal's speech."what a great name, I'm Ryuji Kenzaki niceya bro", gave handshake gesture ,"alrigth" accept handshake.
+"sst hey..." 
+
+someone poke and whisper to Mikazuki,
+
+"are ya new here?",
+
+look at the boy who talk to him,
+
+"yeah, Mikazuki Tsuruya"
+
+nods why quiet introduction during Principal's speech.
+
+"what a great name, I'm Ryuusei Kenzaki niceya bro",
+
+gave a handshake ,
+
+"alright"
 
 after the ceremony ended, the students can go to their classes.
 
@@ -136,11 +162,14 @@ snap up from his daydream
 
 "huh? me? owh, my class is... 2-D",
 
+"seems like we had the same board... whatever"
 
-"seems like we had the same board... whatever here we go"
+"Yeah that was right" 
 
+tap his shoulder
 
-"This way"
+"C'mon we gonna late"
 
-Ryuken lead the way to 2nd floor where the 2-D class is.
+Ryuken lead through the corridor ,step to stairs that one of way to 2nd floor where is. 
 
+with just a second, Mikazuki's vision hazed to gray atmosphere, time stop ticking as the world has been paused, reveal absolutely strange view, white pillars un-conditon, abstract pictures on the wall, gravity distorted.

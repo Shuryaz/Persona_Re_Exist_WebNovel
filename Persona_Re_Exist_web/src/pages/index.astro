@@ -375,6 +375,14 @@ const posts = (await getCollection('chapters')).sort(
 			.dark-preview {
 				background: #1a1615;
 			}
+			.oled-preview {
+				background: #000000;
+				border-color: #444444;
+			}
+			.velvet-preview {
+				background: #0a0d1a;
+				border-color: #ff75a0;
+			}
 
 			.chapter-grid {
 				display: grid;
@@ -504,6 +512,14 @@ const posts = (await getCollection('chapters')).sort(
 									<button class="theme-btn" data-set-theme="dark">
 										<div class="theme-preview dark-preview"></div>
 										Sunset (Dark)
+									</button>
+									<button class="theme-btn" data-set-theme="oled">
+										<div class="theme-preview oled-preview"></div>
+										AMOLED (Black)
+									</button>
+									<button class="theme-btn" data-set-theme="velvet">
+										<div class="theme-preview velvet-preview"></div>
+										Velvet Room
 									</button>
 								</div>
 							</div>
@@ -641,15 +657,15 @@ const posts = (await getCollection('chapters')).sort(
 				};
 				
 				// Initialize button state based on current applied theme
-				const initialTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+				const initialTheme = document.documentElement.getAttribute('data-theme') || 'light';
 				updateActiveThemeButton(initialTheme);
 				
 				themeBtns.forEach(btn => {
 					btn.addEventListener('click', () => {
 						const selectedTheme = btn.getAttribute('data-set-theme');
-						if (selectedTheme === 'dark') {
-							document.documentElement.setAttribute('data-theme', 'dark');
-							localStorage.setItem('theme', 'dark');
+						if (selectedTheme && selectedTheme !== 'light') {
+							document.documentElement.setAttribute('data-theme', selectedTheme);
+							localStorage.setItem('theme', selectedTheme);
 						} else {
 							document.documentElement.removeAttribute('data-theme');
 							localStorage.setItem('theme', 'light');
